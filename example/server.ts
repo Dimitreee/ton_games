@@ -1,7 +1,7 @@
 import { GameServer } from '../lib/Server';
 
 const props = {
-    port: 3000
+    port: 4040
 }
 const server = new GameServer(props)
 
