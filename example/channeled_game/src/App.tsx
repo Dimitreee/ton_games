@@ -1,27 +1,24 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './App.css';
+import { validateMnemonic, mnemonicToKeyPair } from "tonweb-mnemonic";
+import {Login} from "./components/Login";
+import {Wallet} from "./components/Wallet";
+
 
 function App() {
-  const messageInput = useRef<HTMLInputElement | null>(null)
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    if (messageInput.current) {
-      console.log(messageInput.current.value)
-    }
-  }
+  const [isLoginHidden, setLoginHidden] = useState(false);
+  const [keyPair, setKeyPair] = useState({publicKey: null, secretKey: null})
 
   return (
       <div className="App">
         <div className="App-header">
-          <div className="Token-container">
-            <form action="" onSubmit={handleSubmit}>
-              <input type="text" ref={messageInput}/>
-              <button>
-                sendMessage
-              </button>
-            </form>
-          </div>
+          {
+            isLoginHidden ? <Wallet keyPair={keyPair}/>
+                : <Login
+                    setLoginHidden={(isLoginHidden) => setLoginHidden(isLoginHidden)}
+                    setKeyPair={(keyPair => setKeyPair(keyPair))}
+                />
+          }
         </div>
       </div>
   );
