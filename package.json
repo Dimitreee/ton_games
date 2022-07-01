@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "tonweb": "^0.0.50",
     "nodemon": "^2.0.18",
     "socket.io": "^4.5.1",
     "ts-node": "^10.8.1",
