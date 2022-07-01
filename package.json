@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.18"
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.18",
+    "tonweb": "^0.0.50"
   }
 }
