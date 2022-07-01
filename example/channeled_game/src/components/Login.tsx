@@ -22,7 +22,6 @@ export const Login: React.FC<ILoginProps> = ({setLoginHidden, setKeyPair, ...res
                 setLoginHidden(true)
                 setKeyPair(keyPair)
             }
-            console.log(keyPair)
 
         }
     };
