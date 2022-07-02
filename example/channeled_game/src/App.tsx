@@ -13,16 +13,14 @@ function App() {
 
     return (
         <div className="App">
-            <div className="App-header">
-                {
-                    isLoginHidden
-                        ? <Game keyPair={keyPair}/>
-                        : <Login
-                            setLoginHidden={(isLoginHidden) => setLoginHidden(isLoginHidden)}
-                            setKeyPair={(keyPair => setKeyPair(keyPair))}
-                        />
-                }
-            </div>
+            {
+                isLoginHidden
+                    ? <Game keyPair={keyPair}/>
+                    : <Login
+                        setLoginHidden={(isLoginHidden) => setLoginHidden(isLoginHidden)}
+                        setKeyPair={(keyPair => setKeyPair(keyPair))}
+                    />
+            }
         </div>
     );
 }
