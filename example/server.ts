@@ -34,6 +34,7 @@ const State = {
     userScore: 0,
     userCount: 0,
     userWalletAddress: "",
+    // @ts-ignore
     userPublicKey: null,
     // @ts-ignore
     dealerCards: [],
