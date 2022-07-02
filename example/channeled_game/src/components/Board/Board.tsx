@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BlackJack } from './BlackJack'
+import { BlackJack } from '../BlackJack/BlackJack'
 
 interface IBoardProps {
     keyPair: any,
@@ -18,8 +18,6 @@ export const Board: React.FC<IBoardProps> = (props) => {
     })
 
     return (
-        <div>
-            <BlackJack />
-        </div>
+        <BlackJack />
     )
 }

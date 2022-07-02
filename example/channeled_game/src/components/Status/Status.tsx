@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/Status.module.css';
+import styles from './Status.module.css';
 
 type StatusProps = {
   message: string,

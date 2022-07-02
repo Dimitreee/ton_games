@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Deal, GameState, initialState, Message, State } from '../constants'
-import { useTransport } from '../utils/transport'
-import Controls from './Controls'
-import Hand from './Hand'
-import Status from './Status'
+import styles from './BlackJack.module.css'
+import { Deal, GameState, initialState, Message, State } from '../../constants'
+import { useTransport } from '../../utils/transport'
+import Controls from '../Controls/Controls'
+import Hand from '../Hand/Hand'
+import Status from '../Status/Status'
 
 export const BlackJack: React.FC = () => {
   const { setUpdate, manager, resetState } = useTransport<State>()
-
   const [state, setState]  = useState<State>(initialState)
 
   const {
@@ -284,7 +284,7 @@ export const BlackJack: React.FC = () => {
   }
 
   return (
-      <>
+      <div className={styles.boardContainer}>
         <Status message={message} balance={balance} />
         <Controls
             balance={balance}
@@ -297,6 +297,6 @@ export const BlackJack: React.FC = () => {
         />
         <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
         <Hand title={`Your Hand (${userScore})`} cards={userCards} />
-      </>
+      </div>
   );
 }

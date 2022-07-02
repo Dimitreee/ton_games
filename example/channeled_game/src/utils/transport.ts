@@ -1,6 +1,6 @@
 import { Manager, Socket } from 'socket.io-client'
 
-const API_URL = "http://localhost:4040"
+const API_URL = "w:4040"
 
 export class TransportManager {
     constructor() {

@@ -1,16 +1,15 @@
 import React, {useRef} from 'react'
 import {mnemonicToKeyPair, validateMnemonic} from "tonweb-mnemonic";
 
-
-
 interface ILoginProps {
     setLoginHidden: (isLoginHidden: boolean) => void,
     setKeyPair: (keyPair: any) => void
 }
 
-
-export const Login: React.FC<ILoginProps> = ({setLoginHidden, setKeyPair, ...rest}) => {
+export const Login: React.FC<ILoginProps> = (props) => {
+    const { setLoginHidden, setKeyPair, ...rest } = props;
     const messageInput = useRef<HTMLInputElement | null>(null)
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (messageInput.current) {
@@ -25,6 +24,7 @@ export const Login: React.FC<ILoginProps> = ({setLoginHidden, setKeyPair, ...res
 
         }
     };
+
     return (
         <div className="Token-container">
             <form action="" onSubmit={handleSubmit}>

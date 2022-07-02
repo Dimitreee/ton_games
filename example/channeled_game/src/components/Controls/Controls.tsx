@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './styles/Controls.module.css';
+import styles from './Controls.module.css';
 
 type ControlsProps = {
   balance: number,

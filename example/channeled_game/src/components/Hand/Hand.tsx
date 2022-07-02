@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './styles/Hand.module.css';
-import Card from './Card';
+import styles from './Hand.module.css';
+import Card from '../Card/Card';
 
 type HandProps = {
   title: string,
@@ -15,6 +15,7 @@ const Hand: React.FC<HandProps> = ({ title, cards }) => {
       );
     }
   }
+
   return (
     <div className={styles.handContainer}>
       {getTitle()}

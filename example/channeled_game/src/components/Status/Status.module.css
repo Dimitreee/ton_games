@@ -1,13 +1,15 @@
 .statusContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5em;
+  gap: 1em;
 }
 
 .status {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5em 0.5em 0.5em 1em;
   padding: 1em;
   width: 60%;
   background: black;
@@ -20,7 +22,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5em 1em 0.5em 0.5em;
   padding: 1em;
   width: 30%;
   background: black;
