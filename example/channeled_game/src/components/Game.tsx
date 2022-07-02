@@ -30,7 +30,7 @@ export const Game: React.FC<IGameProps> = (props) => {
 
     return (
         <div className="Token-container">
-            <div>{walletAddress ? <Board /> : null}</div>
+            <div>{walletAddress ? <Board keyPair={props.keyPair} walletAddress={walletAddress}/> : null}</div>
         </div>
     );
 };
