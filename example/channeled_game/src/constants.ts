@@ -29,6 +29,8 @@ export interface State {
     userCards?: any,
     userScore?: any,
     userCount?: any,
+    userWalletAddress?: string,
+    userPublicKey?: any,
     dealerCards?: any,
     dealerScore?: any,
     dealerCount?: any,
@@ -45,6 +47,8 @@ export const initialState: State = {
     userCards: [],
     userScore: 0,
     userCount: 0,
+    userWalletAddress: "",
+    userPublicKey: null,
     // @ts-ignore
     dealerCards: [],
     dealerScore: 0,

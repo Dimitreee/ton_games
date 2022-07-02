@@ -10,7 +10,7 @@ export class TransportManager {
         });
     }
 
-    public init = <S>() => {
+    public init = <S>(state?: any) => {
         this.socket = this.manager?.socket("/");
 
         this.socket?.on("reconnect", (attempt) => {
@@ -33,6 +33,7 @@ export class TransportManager {
             }
 
             this.isConnected = true;
+            this.socket?.emit("changeState", state);
 
             engine.once("upgrade", () => {
                 console.log(engine.transport.name);
@@ -80,9 +81,6 @@ export class TransportManager {
 const manager = new TransportManager()
 
 export const useTransport = <S>() => {
-    if (!manager.isConnected) {
-        manager.init<S>()
-    }
 
     const setUpdate = (payload: S) => {
         manager.sendMessage("changeState", payload)
