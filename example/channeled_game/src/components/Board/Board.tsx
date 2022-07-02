@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react'
-import { BlackJack } from '../BlackJack/BlackJack'
+import TonWeb from "tonweb";
+import {useTransport} from "../../utils/transport";
+import {State} from "../../constants";
+import {BlackJack} from "../BlackJack/BlackJack";
+
+const utils = TonWeb.utils;
 
 interface IBoardProps {
     keyPair: any,
@@ -7,14 +12,15 @@ interface IBoardProps {
 }
 
 export const Board: React.FC<IBoardProps> = (props) => {
+    const { manager } = useTransport<State>()
     const {
         keyPair,
         walletAddress,
     } = props;
 
-    useEffect(() => {
-        console.log(walletAddress)
-        console.log(keyPair)
+    manager.init({
+        userWalletAddress: walletAddress,
+        userPublicKey: utils.bytesToBase64(keyPair.publicKey)
     })
 
     return (
