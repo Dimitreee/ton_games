@@ -1,21 +1,21 @@
-import { GameServer } from '../lib/Server';
-import jsonData from './channeled_game/src/deck';
+import jsonData from './deck';
+
 const cards = JSON.stringify(jsonData.cards)
 
-enum GameState {
+export enum GameState {
     bet,
     init,
     userTurn,
     dealerTurn
 }
 
-enum Deal {
+export enum Deal {
     user,
     dealer,
     hidden
 }
 
-enum Message {
+export enum Message {
     bet = 'Place a Bet!',
     hitStand = 'Hit or Stand?',
     bust = 'Bust!',
@@ -24,9 +24,23 @@ enum Message {
     tie = 'Tie!'
 }
 
+export interface State {
+    deck?: any,
+    userCards?: any,
+    userScore?: any,
+    userCount?: any,
+    dealerCards?: any,
+    dealerScore?: any,
+    dealerCount?: any,
+    balance?: any,
+    bet?: any,
+    gameState?: any,
+    message?: any,
+    buttonState?: any,
+}
 
-const State = {
-    deck: cards,
+export const initialState: State = {
+    deck: [],
     // @ts-ignore
     userCards: [],
     userScore: 0,
@@ -45,11 +59,3 @@ const State = {
         resetDisabled: true
     },
 }
-
-const props = {
-    port: 4040,
-    initialState: State,
-}
-const server = new GameServer(props)
-
-server.init()

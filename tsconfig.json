@@ -4,10 +4,12 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "files": [
-    "./example/index.ts",
+    "./example/*",
     "./lib/",
   ]
 }
