@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { BlackJack } from './BlackJack'
-import { useTransport } from '../utils/transport'
-import {State} from "../constants";
 import TonWeb from "tonweb";
+import {useTransport} from "../../utils/transport";
+import {State} from "../../constants";
+import {BlackJack} from "../BlackJack/BlackJack";
 
 const utils = TonWeb.utils;
 
@@ -24,8 +24,6 @@ export const Board: React.FC<IBoardProps> = (props) => {
     })
 
     return (
-        <div>
-            <BlackJack />
-        </div>
+        <BlackJack />
     )
 }

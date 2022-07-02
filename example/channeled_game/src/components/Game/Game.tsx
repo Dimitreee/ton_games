@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import TonWeb from "tonweb";
-import {Board} from "./Board";
+import {Board} from "../Board/Board";
 
 const providerUrl = 'https://testnet.toncenter.com/api/v2/jsonRPC';
 const apiKey = '';
@@ -13,6 +13,7 @@ interface IGameProps {
 
 export const Game: React.FC<IGameProps> = (props) => {
     const [wallet, setWallet] = useState<any>();
+
     useEffect(() => {
         const walletObj = new tonweb.wallet.all.v3R2(provider, {
             publicKey: props.keyPair.publicKey,
@@ -23,15 +24,10 @@ export const Game: React.FC<IGameProps> = (props) => {
     }, []);
 
     let walletAddress = '';
+
     if (wallet) {
         walletAddress = wallet.toString(true, true, true)
     }
 
-    return (
-        <div className="Token-container">
-            <div>
-                {walletAddress && <Board keyPair={props.keyPair} walletAddress={walletAddress}/>}
-            </div>
-        </div>
-    );
+    return walletAddress ? <Board keyPair={props.keyPair} walletAddress={walletAddress}/> : null;
 };

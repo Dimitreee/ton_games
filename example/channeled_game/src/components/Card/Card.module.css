@@ -1,6 +1,6 @@
 .card {
-  width: 120px;
-  height: 260px;
+  width: 100px;
+  height: 220px;
   margin: 10px;
   padding: 0.5em 1.5em;
   background: rgb(230, 230, 230);
@@ -10,8 +10,8 @@
 }
 
 .hiddenCard {
-  width: 110px;
-  height: 250px;
+  width: 90px;
+  height: 210px;
   margin: 10px;
   padding: 0.5em 1.5em;
   background-image: linear-gradient(176deg, #ffffff 8.33%, #ff0000 8.33%, #ff0000 50%, #ffffff 50%, #ffffff 58.33%, #ff0000 58.33%, #ff0000 100%);
@@ -31,12 +31,12 @@
 }
 
 .value {
-  font-size: 400%;
+  font-size: 300%;
   margin: 0;
 }
 
 .suit {
-  font-size: 600%;
+  font-size: 200%;
   margin: 0;
   text-align: center;
 }
@@ -57,7 +57,7 @@
   }
 
   .suit {
-    font-size: 500%;
+    font-size: 300%;
   }
 }
 

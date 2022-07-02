@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css';
-import { Login } from "./components/Login";
-import { Game } from "./components/Game";
+import { Login } from "./components/Login/Login";
+import { Game } from "./components/Game/Game";
 
 function App() {
     const [isLoginHidden, setLoginHidden] = useState(false);
