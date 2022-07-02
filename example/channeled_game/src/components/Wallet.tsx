@@ -1,11 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import TonWeb from "tonweb";
-import {Address} from "cluster";
 
 const BN = TonWeb.utils.BN;
 const providerUrl = 'https://testnet.toncenter.com/api/v2/jsonRPC';
 const apiKey = '';
-const provider = new TonWeb.HttpProvider(providerUrl, {apiKey})
+const provider = new TonWeb.HttpProvider(providerUrl, {apiKey});
 const tonweb = new TonWeb(provider);
 
 interface IWalletProps {

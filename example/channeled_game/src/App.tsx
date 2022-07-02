@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './App.css';
-import { validateMnemonic, mnemonicToKeyPair } from "tonweb-mnemonic";
 import {Login} from "./components/Login";
 import {Wallet} from "./components/Wallet";
 
