@@ -12,7 +12,7 @@ interface ILoginProps {
 export const Login: React.FC<ILoginProps> = ({setLoginHidden, setKeyPair, ...rest}) => {
     const messageInput = useRef<HTMLInputElement | null>(null)
     const handleSubmit = async (e: any) => {
-        e.preventDefault()
+        e.preventDefault();
         if (messageInput.current) {
             const mnemonic = messageInput.current.value.split(",");
             const isValid = await validateMnemonic(mnemonic);
