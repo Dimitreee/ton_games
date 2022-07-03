@@ -1,16 +1,9 @@
 import { Server, Socket } from 'socket.io'
 import { StateManager } from './StateManager';
 
-export interface Controller {
-    onEvent: (event: string, data: any) => void
-    setSocket: (socket: Socket) => void
-    setState: (state: StateManager) => void
-}
-
 interface Props {
     port: number
     initialState: Record<any, any>
-    controller: Controller
 }
 
 export class GameServer {
@@ -42,12 +35,6 @@ export class GameServer {
 
                 this.state.set(socket.id, { socket, onUpdate, state: { ...this.props.initialState, balance: state.balance }, })
             })
-
-            connectedSocket.on("*", (event, data) => {
-                this.props.controller.onEvent(event, data)
-            });
-
-            this.props.controller.setSocket(connectedSocket);
         })
     }
 

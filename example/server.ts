@@ -1,6 +1,4 @@
-import { Socket } from 'socket.io'
-import { Controller, GameServer } from '../lib/Server'
-import { StateManager } from '../lib/StateManager'
+import { GameServer } from '../lib/Server'
 import jsonData from './channeled_game/src/deck';
 const cards = JSON.stringify(jsonData.cards)
 
@@ -51,39 +49,9 @@ const State = {
     },
 }
 
-class GameController implements Controller {
-    constructor() {
-    }
-
-    public onEvent (event: string, data: any) {
-        switch (event) {
-            case "" :
-                break;
-            default:
-                break;
-        }
-    }
-
-    private handleBetPlace () {
-
-    }
-
-    public setSocket (socket: Socket) {
-        this.socket = socket;
-    }
-
-    public setState (state: StateManager) {
-        this.state = state;
-    }
-
-    private socket?: Socket;
-    private state?: StateManager;
-}
-
 const props = {
     port: 4040,
     initialState: State,
-    controller: new GameController()
 }
 
 const server = new GameServer(props)
