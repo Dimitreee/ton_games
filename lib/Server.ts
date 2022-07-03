@@ -44,6 +44,7 @@ export class GameServer {
             this.props.port, {
                 cors: {
                     origin: false,
+                    credentials: true
                 },
             }
         );
