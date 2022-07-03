@@ -1,4 +1,6 @@
 import { Manager, Socket } from 'socket.io-client'
+import { GameState, Message } from '../constants'
+import jsonData from '../deck';
 
 const API_URL = "http://localhost:4040"
 
@@ -33,7 +35,7 @@ export class TransportManager {
             }
 
             this.isConnected = true;
-            this.socket?.emit("changeState", state);
+            this.sendMessage("changeState", { ...INITIAL_STATE, ...state })
 
             engine.once("upgrade", () => {
                 console.log(engine.transport.name);
@@ -87,8 +89,34 @@ export const useTransport = <S>() => {
     }
 
     const resetState = () => {
-        manager.sendMessage("resetState")
+        manager.sendMessage("resetState", INITIAL_STATE)
     }
 
     return { manager, setUpdate, resetState };
+}
+
+const cards = JSON.stringify(jsonData.cards)
+
+export const INITIAL_STATE = {
+    deck: cards,
+    // @ts-ignore
+    userCards: [],
+    userScore: 0,
+    userCount: 0,
+    userWalletAddress: "",
+    // @ts-ignore
+    userPublicKey: null,
+    // @ts-ignore
+    dealerCards: [],
+    dealerScore: 0,
+    dealerCount: 0,
+    balance: 100,
+    bet: 0,
+    gameState: GameState.bet,
+    message: Message.bet,
+    buttonState: {
+        hitDisabled: false,
+        standDisabled: false,
+        resetDisabled: true
+    },
 }
