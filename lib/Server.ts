@@ -43,7 +43,7 @@ export class GameServer {
         this.server = new Server(
             this.props.port, {
                 cors: {
-                    origin: 'http://localhost:3000',
+                    origin: 'https://ton-games-dapp.herokuapp.com/',
                     credentials: true,
                 },
             }
