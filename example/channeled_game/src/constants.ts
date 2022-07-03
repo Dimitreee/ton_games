@@ -50,6 +50,8 @@ export const initialState: State = {
     userWalletAddress: "",
     userPublicKey: null,
     // @ts-ignore
+    dealerPublicKey: null,
+    dealerWalletAddress: "",
     dealerCards: [],
     dealerScore: 0,
     dealerCount: 0,

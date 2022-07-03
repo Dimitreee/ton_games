@@ -106,7 +106,6 @@ export const INITIAL_STATE = {
     userWalletAddress: "",
     // @ts-ignore
     userPublicKey: null,
-    // @ts-ignore
     dealerCards: [],
     dealerScore: 0,
     dealerCount: 0,
@@ -119,4 +118,6 @@ export const INITIAL_STATE = {
         standDisabled: false,
         resetDisabled: true
     },
+    channelAddress: null,
+    channelId: null
 }
