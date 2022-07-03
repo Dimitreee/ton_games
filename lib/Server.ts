@@ -44,7 +44,7 @@ export class GameServer {
             this.props.port, {
                 cors: {
                     origin: 'https://ton-games-dapp.herokuapp.com/',
-                    credentials: true
+                    credentials: false
                 },
             }
         );
