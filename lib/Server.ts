@@ -43,9 +43,7 @@ export class GameServer {
         this.server = new Server(
             this.props.port, {
                 cors: {
-                    origin: '*',
-                    methods: ["GET", "POST"],
-                    credentials: true
+                    origin: false,
                 },
             }
         );
