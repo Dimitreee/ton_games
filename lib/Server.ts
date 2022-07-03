@@ -43,6 +43,10 @@ export class GameServer {
         this.server = new Server(
             this.props.port,
             {
+                cors: {
+                    "origin": "*",
+                    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+                },
                 allowRequest: (req, callback) => {
                     callback(null, true); // cross-origin requests will not be allowed
                 }
