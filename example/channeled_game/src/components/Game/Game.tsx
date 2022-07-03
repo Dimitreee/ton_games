@@ -1,33 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import TonWeb from "tonweb";
-import {Board} from "../Board/Board";
+import React from 'react'
+import { BlackJack } from '../BlackJack/BlackJack'
+import { useLiteNodeContext } from '../LiteNodeProvider/LiteNodeProvider'
+import { WindMillLoading } from "react-loadingg";
 
-const providerUrl = 'https://testnet.toncenter.com/api/v2/jsonRPC';
-const apiKey = '';
-const provider = new TonWeb.HttpProvider(providerUrl, {apiKey});
-const tonweb = new TonWeb(provider);
+export const Game: React.FC = () => {
+    const { isChannelOpen } = useLiteNodeContext();
 
-interface IGameProps {
-    keyPair: any
-}
-
-export const Game: React.FC<IGameProps> = (props) => {
-    const [wallet, setWallet] = useState<any>();
-
-    useEffect(() => {
-        const walletObj = new tonweb.wallet.all.v3R2(provider, {
-            publicKey: props.keyPair.publicKey,
-        });
-        walletObj.getAddress().then((wallet) => {
-            setWallet(wallet)
-        })
-    }, []);
-
-    let walletAddress = '';
-
-    if (wallet) {
-        walletAddress = wallet.toString(true, true, true)
-    }
-
-    return walletAddress ? <Board keyPair={props.keyPair} walletAddress={walletAddress}/> : null;
+    // @ts-ignore
+    return isChannelOpen ? <BlackJack /> : <WindMillLoading />
 };

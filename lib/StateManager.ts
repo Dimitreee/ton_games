@@ -12,16 +12,18 @@ export class StateManager {
     }
 
     public set = (socketId: string, update: Record<string, any>) => {
-        const { state: prevState, socket } = this.get(socketId)
-        const { state } = update
+        const { state: prevState, socket, channel: prevChannel } = this.get(socketId)
+        const { state, channel } = update
 
-        const nextState = {...prevState, ...state}
+        const nextState = {...prevState, ...state }
 
         if (JSON.stringify(prevState) === JSON.stringify(nextState)) {
             return;
         }
 
-        this.storage.set(socketId, { socket: socket, state: nextState })
+        const nextChannel = prevChannel || channel
+
+        this.storage.set(socketId, { socket: socket, state: nextState, channel: nextChannel })
 
         const stateFromStorage = this.get(socketId);
 

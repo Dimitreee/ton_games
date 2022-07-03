@@ -1,18 +1,20 @@
 import './Button.scss';
-import React, { PropsWithChildren } from 'react'
+import React, { ButtonHTMLAttributes, ElementType, PropsWithChildren } from 'react'
 
-interface IButtonProps extends PropsWithChildren {
-    type?: "primary" | "secondary" | "secondary-alternative",
-    onClick: () => void,
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: "primary" | "secondary" | "secondary-alternative",
+    onClick?: () => void,
     disabled?: boolean;
+    type?: "submit";
 }
 
 export const Button: React.FC<IButtonProps> = (props) => {
-    const { type = "primary", onClick, disabled } = props;
+    const { variant = "primary", onClick, disabled, type } = props;
 
     return (
         <button
-            className={`Button Button__${type}`}
+            type={type}
+            className={`Button Button__${variant}`}
             disabled={disabled}
             onClick={onClick}
         >

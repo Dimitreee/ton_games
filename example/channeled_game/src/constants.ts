@@ -30,6 +30,9 @@ export interface State {
     userScore?: any,
     userCount?: any,
     userWalletAddress?: string,
+    channelAddress?: string,
+    userBalance?: any,
+    dealerBalance? :any
     userPublicKey?: any,
     dealerCards?: any,
     dealerScore?: any,
@@ -38,6 +41,7 @@ export interface State {
     bet?: any,
     gameState?: any,
     message?: any,
+    channelState?: any
     buttonState?: any,
 }
 
@@ -47,11 +51,6 @@ export const initialState: State = {
     userCards: [],
     userScore: 0,
     userCount: 0,
-    userWalletAddress: "",
-    userPublicKey: null,
-    // @ts-ignore
-    dealerPublicKey: null,
-    dealerWalletAddress: "",
     dealerCards: [],
     dealerScore: 0,
     dealerCount: 0,

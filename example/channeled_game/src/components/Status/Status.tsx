@@ -1,13 +1,17 @@
 import React, { PropsWithChildren } from 'react'
+import { Button } from '../Button/Button'
+import { useLiteNodeContext } from '../LiteNodeProvider/LiteNodeProvider'
 import styles from './Status.module.css';
 
 interface IStatusProps extends PropsWithChildren {
     message: string,
-    balance: number
 };
 
 const Status: React.FC<IStatusProps> = (props) => {
-    const { message, balance, children } = props;
+    const { closeChannel, serverState } = useLiteNodeContext();
+    const { message, children } = props;
+
+    console.log(serverState.channelState)
 
     return (
         <div className={styles.statusContainer}>
@@ -16,7 +20,10 @@ const Status: React.FC<IStatusProps> = (props) => {
                 {children}
             </div>
             <div className={styles.balance}>
-                <h4 className={styles.value}>Bank: ${balance}</h4>
+                <h4 className={styles.value}>Bank: ${serverState.channelState.balanceB}</h4>
+                <Button variant={"secondary"} onClick={closeChannel}>
+                    Withdraw
+                </Button>
             </div>
         </div>
     );

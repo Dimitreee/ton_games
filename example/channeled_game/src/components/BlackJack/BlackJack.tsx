@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import TonWeb from 'tonweb'
+import { useLiteNodeContext } from '../LiteNodeProvider/LiteNodeProvider'
 import styles from './BlackJack.module.css'
-import { Deal, GameState, initialState, Message, State } from '../../constants'
+import { Deal, GameState, Message, State } from '../../constants'
 import { useTransport } from '../../utils/transport'
 import Controls from '../Controls/Controls'
 import Hand from '../Hand/Hand'
 import Status from '../Status/Status'
+const BN = TonWeb.utils.BN;
 
 export const BlackJack: React.FC = () => {
-  const { setUpdate, manager, resetState } = useTransport<State>()
-  const [state, setState]  = useState<State>(initialState)
+  const { setUpdate, resetState } = useTransport<State>()
+  const { serverState, changeUserBalance } = useLiteNodeContext();
 
   const {
     deck,
@@ -18,26 +21,13 @@ export const BlackJack: React.FC = () => {
     dealerCards,
     dealerScore,
     dealerCount,
-    balance,
     bet,
     gameState,
     message,
     buttonState,
-  } = state;
+  } = serverState;
 
-  useEffect(() => {
-    manager.onStateChange((state: State) => {
-      const deck = typeof state.deck === 'string' ? JSON.parse(state.deck) : state.deck
-
-      setState((prevState: State) => {
-        if (JSON.stringify(prevState) !== JSON.stringify(state)) {
-          return {...prevState, ...state, deck }
-        }
-
-        return prevState
-      })
-    })
-  }, [])
+  const balance = serverState.channelState?.balanceA || 0;
 
   useEffect(() => {
     if (gameState === undefined) {
@@ -122,9 +112,13 @@ export const BlackJack: React.FC = () => {
   const placeBet = (amount: number) => {
     setUpdate({
       bet: amount,
-      balance: Math.round((balance - amount) * 100) / 100,
       gameState: GameState.init
     })
+
+    if (changeUserBalance) {
+      const nextBalance = new BN(balance)
+      changeUserBalance(nextBalance.toNumber() - amount)
+    }
   }
 
   const drawCard = (dealType: Deal) => {
@@ -266,9 +260,12 @@ export const BlackJack: React.FC = () => {
     if (userScore > dealerScore || dealerScore > 21) {
 
       setUpdate({
-        balance: Math.round((balance + (bet * 2)) * 100) / 100,
         message: Message.userWin
       })
+
+      if (changeUserBalance) {
+        changeUserBalance(Math.round((Number(balance) + (bet * 2)) * 100) / 100)
+      }
     }
     else if (dealerScore > userScore) {
       setUpdate({
@@ -277,9 +274,12 @@ export const BlackJack: React.FC = () => {
     }
     else {
       setUpdate({
-        balance: Math.round((balance + (bet * 1)) * 100) / 100,
         message: Message.tie
       });
+
+      if (changeUserBalance) {
+        changeUserBalance(Math.round((Number(balance) + (bet * 1)) * 100) / 100)
+      }
     }
   }
 
@@ -287,7 +287,6 @@ export const BlackJack: React.FC = () => {
       <div className={styles.boardContainer}>
         <Status
             message={message}
-            balance={balance}
         >
           <Controls
               balance={balance}

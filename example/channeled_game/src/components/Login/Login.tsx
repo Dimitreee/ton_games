@@ -1,37 +1,46 @@
-import React, {useRef} from 'react'
-import {mnemonicToKeyPair, validateMnemonic} from "tonweb-mnemonic";
+import React, { useRef } from 'react'
+import "./Login.scss"
+import {
+    mnemonicToKeyPair,
+    validateMnemonic,
+} from "tonweb-mnemonic";
+import { Button } from '../Button/Button'
+import { useLiteNodeContext } from '../LiteNodeProvider/LiteNodeProvider'
 
-interface ILoginProps {
-    setLoginHidden: (isLoginHidden: boolean) => void,
-    setKeyPair: (keyPair: any) => void
-}
+export const Login: React.FC = () => {
+    const { setKeyPair } = useLiteNodeContext();
 
-export const Login: React.FC<ILoginProps> = (props) => {
-    const { setLoginHidden, setKeyPair, ...rest } = props;
-    const messageInput = useRef<HTMLInputElement | null>(null)
+    const messageInput = useRef<HTMLInputElement | null>(null);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+
         if (messageInput.current) {
             const mnemonic = messageInput.current.value.split(",");
             const isValid = await validateMnemonic(mnemonic);
+
             let keyPair = null;
+
             if (isValid) {
                 keyPair = await mnemonicToKeyPair(mnemonic);
-                setLoginHidden(true)
-                setKeyPair(keyPair)
-            }
 
+                if (setKeyPair) {
+                    setKeyPair(keyPair)
+                }
+            }
         }
     };
 
     return (
-        <div className="Token-container">
+        <div className="TokenContainer">
             <form action="" onSubmit={handleSubmit}>
-                <input type="text" ref={messageInput}/>
-                <button>
-                    sendMessage
-                </button>
+                <label>
+                    <span>Enter seed phrase</span>
+                    <input type="text" ref={messageInput}/>
+                </label>
+                <Button variant={"primary"} type={"submit"}>
+                    Login
+                </Button>
             </form>
         </div>
     );

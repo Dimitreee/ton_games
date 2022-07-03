@@ -62,6 +62,22 @@ export class TransportManager {
             }
         })
 
+        this.socket?.on("offChainInit", (payload: any) => {
+            if (this.offChainHandler) {
+                this.offChainHandler(state, payload)
+            }
+        })
+
+        this.socket?.on("channelIsOpen", () => {
+            if (this.openChannelHandler) {
+                this.openChannelHandler()
+            }
+        })
+
+        this.socket?.on("channelClosed", () => {
+            window.location.reload()
+        })
+
         this.socket?.connect()
     }
 
@@ -73,9 +89,19 @@ export class TransportManager {
         this.stateChangeHandler = handler
     }
 
+    public onOffChainInit = (handler: any) => {
+        this.offChainHandler = handler
+    }
+
+    public onChanelOpen = (handler: any) => {
+        this.openChannelHandler = handler
+    }
+
     public isConnected: boolean = false;
 
     private stateChangeHandler?: (...args: any) => void;
+    private offChainHandler?: (...args: any) => void;
+    private openChannelHandler?: (...args: any) => void;
     private socket?: Socket;
     private manager?: Manager;
 }
@@ -83,7 +109,6 @@ export class TransportManager {
 const manager = new TransportManager()
 
 export const useTransport = <S>() => {
-
     const setUpdate = (payload: S) => {
         manager.sendMessage("changeState", payload)
     }
@@ -92,7 +117,36 @@ export const useTransport = <S>() => {
         manager.sendMessage("resetState", INITIAL_STATE)
     }
 
-    return { manager, setUpdate, resetState };
+    const initOffchain = () => {
+        manager.sendMessage("initOffchain", )
+    }
+
+    const initDapp = () => {
+        manager.sendMessage("initDapp")
+    }
+
+    const closeDappChannel = (payload: any) => {
+        manager.sendMessage("closeDappChannel", payload)
+    }
+
+    const emitChangeDealerBalance = (balance: number) => {
+        manager.sendMessage("changeDealerBalance", balance)
+    }
+
+    const sign = (payload: any) => {
+        manager.sendMessage("sign", payload)
+    }
+
+    return {
+        sign,
+        manager,
+        initDapp,
+        setUpdate,
+        resetState,
+        initOffchain,
+        closeDappChannel,
+        emitChangeDealerBalance,
+    };
 }
 
 const cards = JSON.stringify(jsonData.cards)

@@ -1300,6 +1300,13 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+tonweb-mnemonic@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tonweb-mnemonic/-/tonweb-mnemonic-1.0.1.tgz#bb1b8bb6220f56f8e230b8a8f9555ff5bcbd4681"
+  integrity sha512-YQAEXQHBHb0dnNy50bwIutXwyWa6Den7+cLcXWoG7ZClcqo4bjALOr6tnIqI+hs5jab+AGSsRjilxcp8ao/CpA==
+  dependencies:
+    tweetnacl "^1.0.3"
+
 tonweb@^0.0.50:
   version "0.0.50"
   resolved "https://registry.yarnpkg.com/tonweb/-/tonweb-0.0.50.tgz#7c171e46cf57613e4e463673ee613dfb28127810"
@@ -1355,7 +1362,7 @@ tslib@^2.0.0, tslib@^2.4.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
-tweetnacl@1.0.3:
+tweetnacl@1.0.3, tweetnacl@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
   integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==

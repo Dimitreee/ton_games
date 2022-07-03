@@ -57,16 +57,16 @@ const Controls: React.FC<ControlsProps> = ({ balance, gameState, buttonState, be
                 className={inputStyle}
             />
           </label>
-          <Button type={"secondary-alternative"} onClick={() => onBetClick()}>Bet</Button>
+          <Button variant={"secondary-alternative"} onClick={() => onBetClick()}>Bet</Button>
         </div>
     );
   }
 
   return (
       <div className={styles.controlsContainer}>
-        <Button type={"secondary-alternative"} onClick={() => hitEvent()} disabled={buttonState.hitDisabled}>Hit</Button>
-        <Button type={"secondary-alternative"} onClick={() => standEvent()} disabled={buttonState.standDisabled}>Stand</Button>
-        <Button type={"secondary-alternative"} onClick={() => resetEvent()} disabled={buttonState.resetDisabled}>Reset</Button>
+        <Button variant={"secondary-alternative"} onClick={() => hitEvent()} disabled={buttonState.hitDisabled}>Hit</Button>
+        <Button variant={"secondary-alternative"} onClick={() => standEvent()} disabled={buttonState.standDisabled}>Stand</Button>
+        <Button variant={"secondary-alternative"} onClick={() => resetEvent()} disabled={buttonState.resetDisabled}>Reset</Button>
       </div>
   );
 }

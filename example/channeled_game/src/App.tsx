@@ -1,25 +1,15 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import './App.css';
+import { useLiteNodeContext } from './components/LiteNodeProvider/LiteNodeProvider'
 import { Login } from "./components/Login/Login";
 import { Game } from "./components/Game/Game";
 
 function App() {
-    const [isLoginHidden, setLoginHidden] = useState(false);
-    const [keyPair, setKeyPair] = useState({
-        publicKey: null,
-        secretKey: null
-    });
+    const { keyPair } = useLiteNodeContext();
 
     return (
         <div className="App">
-            {
-                isLoginHidden
-                    ? <Game keyPair={keyPair}/>
-                    : <Login
-                        setLoginHidden={(isLoginHidden) => setLoginHidden(isLoginHidden)}
-                        setKeyPair={(keyPair => setKeyPair(keyPair))}
-                    />
-            }
+            { keyPair ? <Game /> : <Login/> }
         </div>
     );
 }
