@@ -285,18 +285,24 @@ export const BlackJack: React.FC = () => {
 
   return (
       <div className={styles.boardContainer}>
-        <Status message={message} balance={balance} />
-        <Controls
+        <Status
+            message={message}
             balance={balance}
-            gameState={gameState}
-            buttonState={buttonState}
-            betEvent={placeBet}
-            hitEvent={hit}
-            standEvent={stand}
-            resetEvent={resetGame}
-        />
-        <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
-        <Hand title={`Your Hand (${userScore})`} cards={userCards} />
+        >
+          <Controls
+              balance={balance}
+              gameState={gameState}
+              buttonState={buttonState}
+              betEvent={placeBet}
+              hitEvent={hit}
+              standEvent={stand}
+              resetEvent={resetGame}
+          />
+        </Status>
+        <div className={styles.handContainer}>
+          <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
+          <Hand title={`Your Hand (${userScore})`} cards={userCards} />
+        </div>
       </div>
   );
 }

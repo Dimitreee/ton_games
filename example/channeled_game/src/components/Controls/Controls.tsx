@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from '../Button/Button'
 import styles from './Controls.module.css';
 
 type ControlsProps = {
@@ -42,33 +43,31 @@ const Controls: React.FC<ControlsProps> = ({ balance, gameState, buttonState, be
     }
   }
 
-  const getControls = () => {
-    if (gameState === 0) {
-      return (
+  if (gameState === 0) {
+    return (
         <div className={styles.controlsContainer}>
-          <div className={styles.betContainer}>
-            <h4>Amount:</h4>
-            <input autoFocus type='number' value={amount} onChange={amountChange} className={inputStyle} />
-          </div>
-          <button onClick={() => onBetClick()} className={styles.button}>Bet</button>
+          <label>Amount:
+            <input
+                id="amount"
+                autoFocus
+                type={'number'}
+                min={0}
+                value={amount}
+                onChange={amountChange}
+                className={inputStyle}
+            />
+          </label>
+          <Button type={"secondary-alternative"} onClick={() => onBetClick()}>Bet</Button>
         </div>
-      );
-    }
-    else {
-      return (
-        <div className={styles.controlsContainer}>
-          <button onClick={() => hitEvent()} disabled={buttonState.hitDisabled} className={styles.button}>Hit</button>
-          <button onClick={() => standEvent()} disabled={buttonState.standDisabled} className={styles.button}>Stand</button>
-          <button onClick={() => resetEvent()} disabled={buttonState.resetDisabled} className={styles.button}>Reset</button>
-        </div>
-      );
-    }
+    );
   }
 
   return (
-    <>
-      {getControls()}
-    </>
+      <div className={styles.controlsContainer}>
+        <Button type={"secondary-alternative"} onClick={() => hitEvent()} disabled={buttonState.hitDisabled}>Hit</Button>
+        <Button type={"secondary-alternative"} onClick={() => standEvent()} disabled={buttonState.standDisabled}>Stand</Button>
+        <Button type={"secondary-alternative"} onClick={() => resetEvent()} disabled={buttonState.resetDisabled}>Reset</Button>
+      </div>
   );
 }
 

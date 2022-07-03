@@ -1,23 +1,23 @@
 .card {
-  width: 100px;
-  height: 220px;
+  width: 70px;
+  height: 180px;
   margin: 10px;
   padding: 0.5em 1.5em;
   background: rgb(230, 230, 230);
-  border-radius: 15px;
+  border-radius: 8px;
   box-shadow: 0px 1px 10px rgb(0, 0, 0);
   cursor: default;
 }
 
 .hiddenCard {
-  width: 90px;
-  height: 210px;
+  width: 60px;
+  height: 170px;
   margin: 10px;
   padding: 0.5em 1.5em;
   background-image: linear-gradient(176deg, #ffffff 8.33%, #ff0000 8.33%, #ff0000 50%, #ffffff 50%, #ffffff 58.33%, #ff0000 58.33%, #ff0000 100%);
   background-size: 60.00px 4.20px;
   border: 5px solid white;
-  border-radius: 15px;
+  border-radius: 8px;
   box-shadow: 0px 1px 10px rgb(0, 0, 0);
   cursor: default;
 }
@@ -31,34 +31,12 @@
 }
 
 .value {
-  font-size: 300%;
   margin: 0;
 }
 
 .suit {
-  font-size: 200%;
   margin: 0;
   text-align: center;
-}
-
-@media screen and (max-width: 992px) {
-  .card {
-    width: 70px;
-    height: 180px;
-  }
-
-  .hiddenCard {
-    width: 60px;
-    height: 170px;
-  }
-
-  .value {
-    font-size: 300%;
-  }
-
-  .suit {
-    font-size: 300%;
-  }
 }
 
 @media screen and (max-width: 600px) {
@@ -73,13 +51,5 @@
     height: 96px;
     padding: 5px 10px;
     border: 2px solid white;
-  }
-
-  .value {
-    font-size: 150%;
-  }
-
-  .suit {
-    font-size: 250%;
   }
 }

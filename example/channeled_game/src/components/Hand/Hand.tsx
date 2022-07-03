@@ -7,18 +7,14 @@ type HandProps = {
   cards: any[]
 };
 
-const Hand: React.FC<HandProps> = ({ title, cards }) => {
-  const getTitle = () => {
-    if (cards.length > 0) {
-      return (
-        <h1 className={styles.title}>{title}</h1>
-      );
-    }
-  }
+const Hand: React.FC<HandProps> = (props) => {
+  const { title, cards } = props;
 
   return (
     <div className={styles.handContainer}>
-      {getTitle()}
+      {cards.length > 0 && (
+          <h5 className={styles.title}>{title}</h5>
+      )}
       <div className={styles.cardContainer}>
         {cards.map((card: any, index: number) => {
           return (
