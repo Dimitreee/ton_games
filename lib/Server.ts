@@ -1,4 +1,4 @@
-import { Server, Socket } from 'socket.io'
+import { Server } from 'socket.io'
 import { StateManager } from './StateManager';
 
 const TonWeb = require("tonweb");
@@ -16,7 +16,6 @@ const tonweb = new TonWeb(provider);
 
 interface Props {
     port: number
-    initialState: Record<any, any>
 }
 
 export class GameServer {
@@ -49,18 +48,18 @@ export class GameServer {
         );
 
         this.server.on("connection", (connectedSocket) => {
-            this.state.initState(connectedSocket.id, { socket: connectedSocket, state: this.props.initialState })
+            this.state.setSocket(connectedSocket.id, { socket: connectedSocket })
 
             connectedSocket.on("changeState", (state) => {
                 this.state.set(connectedSocket.id, { state })
             })
 
-            connectedSocket.on("resetState", () => {
+            connectedSocket.on("resetState", (initialState) => {
                 const prevState = this.state.get(connectedSocket.id);
 
                 const { socket, onUpdate, state } = prevState;
 
-                this.state.set(socket.id, { socket, onUpdate, state: { ...this.props.initialState, balance: state.balance }, })
+                this.state.set(socket.id, { socket, onUpdate, state: { ...initialState, balance: state.balance }, })
             })
 
             connectedSocket.on("initChannel", () => {

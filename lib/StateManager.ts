@@ -3,10 +3,8 @@ export class StateManager {
         this.storage = new Map<string, Record<string, any>>();
     }
 
-    public initState(socketId: string, update: Record<string, any>) {
+    public setSocket(socketId: string, update: Record<string, any>) {
         this.storage.set(socketId, update)
-
-        update.socket.emit("stateChange", { ...update.state })
     }
 
     public get = (socketId: string) => {
