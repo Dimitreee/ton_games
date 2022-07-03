@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
+    "start": "ts-node ./example/server.ts",
     "dev": "ts-node ./example/server.ts",
     "dev-debug": "DEBUG=* ts-node ./example/server.ts"
   },
