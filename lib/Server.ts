@@ -14,7 +14,7 @@ const TONWEB = new TonWeb(PROVIDER);
 const UTILS = TonWeb.utils;
 
 interface Props {
-    port: number
+    port: any
 }
 
 const SERVER_MNEMONIC = "palace,version,hidden,impulse,digital,awake,achieve,evolve,mercy,typical,mimic,nut,spawn,zebra,trigger,refuse,primary,toddler,manage,east,stock,minor,resource,script"
