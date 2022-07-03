@@ -23,6 +23,8 @@ export const Board: React.FC<IBoardProps> = (props) => {
         userPublicKey: utils.bytesToBase64(keyPair.publicKey)
     })
 
+    manager.sendMessage("")
+
     return (
         <BlackJack />
     )

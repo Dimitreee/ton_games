@@ -35,6 +35,9 @@ const State = {
     // @ts-ignore
     userPublicKey: null,
     // @ts-ignore
+    dealerPublicKey: null,
+    dealerWalletAddress: "",
+    // @ts-ignore
     dealerCards: [],
     dealerScore: 0,
     dealerCount: 0,
