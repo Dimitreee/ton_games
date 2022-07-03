@@ -41,7 +41,12 @@ export class GameServer {
 
     public init() {
         this.server = new Server(
-            this.props.port
+            this.props.port,
+            {
+                allowRequest: (req, callback) => {
+                    callback(null, true); // cross-origin requests will not be allowed
+                }
+            }
         );
 
         const channelInitState = {
