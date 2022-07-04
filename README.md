@@ -56,6 +56,6 @@ Quick start guide:
 5) cd example/channeled_game
 6) yarn && yarn dev
 ```
-Look at the source code for more [server implementation details](https://github.com/startfellows/tonapi-oauth-demo/blob/master/src/App.tsx) and [client implementation details](https://github.com/Dimitreee/ton_games/blob/master/example/channeled_game/src/App.tsx)
+Look at the source code for more [server implementation details](https://github.com/Dimitreee/ton_games/blob/tmp/lib/Server.ts) and [client implementation details](https://github.com/Dimitreee/ton_games/blob/master/example/channeled_game/src/App.tsx)
 
 
