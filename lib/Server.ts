@@ -17,7 +17,7 @@ interface Props {
     port: any
 }
 
-const SERVER_MNEMONIC = "palace,version,hidden,impulse,digital,awake,achieve,evolve,mercy,typical,mimic,nut,spawn,zebra,trigger,refuse,primary,toddler,manage,east,stock,minor,resource,script"
+const SERVER_MNEMONIC = "ENTER_24_SEED_PHRASE_HERE"
 
 export class GameServer {
     constructor(private props: Props) {
