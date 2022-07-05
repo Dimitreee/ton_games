@@ -48,8 +48,9 @@ Simple dApp demo using TonGames Lite Node server and client
 ```javascript
 Quick start guide:
 
-1) git clone git@github.com:Dimitreee/ton_games.git
-2) cd ton_games
+0) git clone git@github.com:Dimitreee/ton_games.git
+1) cd ton_games
+2) git checkout tmp
 3) yarn && yarn dev
 // lite Node demo server will be started at localhost:4000
 4) open new terminal session
