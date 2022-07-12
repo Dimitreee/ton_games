@@ -1,5 +1,5 @@
 # TonGames
-![kindpng_303724](https://user-images.githubusercontent.com/18723798/178425733-c53869d0-2a62-4f66-b573-dcc61b9095af.png | width=200)
+<img src="[https://camo.githubusercontent.com/...](https://user-images.githubusercontent.com/18723798/178425733-c53869d0-2a62-4f66-b573-dcc61b9095af.png)" data-canonical-src="[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png](https://user-images.githubusercontent.com/18723798/178425733-c53869d0-2a62-4f66-b573-dcc61b9095af.png)" width="200" />
 
 ## TON games overview
 
