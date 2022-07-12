@@ -2,6 +2,8 @@
 
 ## TON games overview
 
+![kindpng_303724](https://user-images.githubusercontent.com/18723798/178425733-c53869d0-2a62-4f66-b573-dcc61b9095af.png)
+
 TonGames is an Web3 Multiplayer Framework for TON and Node.js, with clients available for the Web. 
 
 The project focuses on providing synchronizable data structures and channels transactions helpers for realtime web3 and turn-based games, matchmaking, and ease of usage both between many web3 clients.
